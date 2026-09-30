@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookmarkFix</title>
+    <link rel="icon" href="icons/icon32.png" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><img src="icons/icon32.png" alt="" width="22" height="22" /> BookmarkFix</div>
+      <nav class="views" id="views">
+        <button data-view="check" class="active">Check</button>
+        <button data-view="history">History</button>
+      </nav>
+      <div class="spacer"></div>
+      <div class="menu-wrap">
+        <button class="btn" id="btnBackup">Full backup ▾</button>
+        <div class="menu" id="backupMenu" hidden>
+          <button data-format="html">HTML (importable in any browser)</button>
+          <button data-format="json">JSON (full tree with ids)</button>
+        </div>
+      </div>
+      <button class="btn" id="btnSettings">Settings</button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-head">
+          <span class="side-title">Folders</span>
+          <button class="btn sm" id="btnVerifyFolder" disabled>Verify selected</button>
+          <button class="btn sm primary" id="btnVerifyAll">Verify all</button>
+        </div>
+        <p class="hint">Right-click a folder to verify it or back it up.</p>
+        <ul class="tree" id="tree"></ul>
+      </aside>
+
+      <main>
+        <section id="viewCheck">
+          <div class="run-panel" id="runPanel"></div>
+
+          <div id="results" hidden>
+            <div class="tabs" id="tabs"></div>
+            <div class="toolbar">
+              <input type="search" id="filter" placeholder="Filter by title, URL, folder or cause" />
+              <button class="btn sm" id="selAll">Select all</button>
+              <button class="btn sm" id="selNone">Select none</button>
+              <div class="spacer"></div>
+              <button class="btn danger" id="btnMove" disabled>Move selected to Trash</button>
+            </div>
+            <div class="table-wrap">
+              <table class="results">
+                <thead>
+                  <tr>
+                    <th class="c-check"></th>
+                    <th>Bookmark</th>
+                    <th>Folder</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+            <p class="muted small" id="capNote" hidden></p>
+          </div>
+        </section>
+
+        <section id="viewHistory" hidden>
+          <h2>Run history</h2>
+          <p class="muted">
+            Every run is stored here (last 50). Use <b>Download</b> to save a run as JSON.
+          </p>
+          <div class="table-wrap">
+            <table class="results">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Scope</th>
+                  <th>Results</th>
+                  <th>In Trash</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="historyRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="menu ctx" id="ctxMenu" hidden>
+      <button data-action="verify">Verify this folder</button>
+      <hr />
+      <button data-action="backup-html">Back up this folder (HTML)</button>
+      <button data-action="backup-json">Back up this folder (JSON)</button>
+    </div>
+
+    <dialog id="dlgSettings">
+      <form method="dialog" id="settingsForm">
+        <h2>Settings</h2>
+        <label>Timeout per link (seconds)<input type="number" name="timeoutSec" min="3" max="120" required /></label>
+        <label>Links checked in parallel<input type="number" name="concurrency" min="1" max="32" required /></label>
+        <label class="check"><input type="checkbox" name="excludeTrash" /> Skip the Trash folder when verifying</label>
+        <div class="dlg-actions">
+          <button class="btn" value="cancel" formnovalidate>Cancel</button>
+          <button class="btn primary" value="save">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>
