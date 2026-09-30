@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-BookmarkFix is a Chrome MV3 extension written in plain ES modules. It has no build step, no dependencies and no package.json. It checks bookmark links, moves dead ones to `Other bookmarks/Trash/<original path>`, logs every run, and exports backups. The user-facing behaviour is described in `README.md`.
+Chrome Bookmarks Fix is a Chrome MV3 extension written in plain ES modules. It has no build step, no dependencies and no package.json. It checks bookmark links, moves dead ones to `Other bookmarks/Trash/<original path>`, logs every run, and exports backups. The user-facing behaviour is described in `README.md`.
 
 ## Commands
 

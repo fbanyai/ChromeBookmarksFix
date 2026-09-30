@@ -1,4 +1,4 @@
-# BookmarkFix
+# Chrome Bookmarks Fix
 
 A Chrome extension (Manifest V3) that checks your bookmarks, moves dead links to a Trash folder that mirrors their original path, logs every run, and makes full backups.
 
@@ -6,7 +6,7 @@ A Chrome extension (Manifest V3) that checks your bookmarks, moves dead links to
 
 1. Open `chrome://extensions` and turn on **Developer mode**.
 2. Click **Load unpacked** and select this folder.
-3. Click the BookmarkFix toolbar icon to open the dashboard.
+3. Click the Chrome Bookmarks Fix toolbar icon to open the dashboard.
 
 ## Use
 
